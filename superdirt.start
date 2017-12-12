@@ -1,0 +1,15 @@
+(
+  "-> Loading SuperDirt".postln;
+  s.options.memSize = 8192 * 128;
+  s.options.numBuffers = 1024 * 128;
+  s.options.numOutputBusChannels = 8;
+  s.waitForBoot {
+    ~dirt = SuperDirt(2, s);
+    s.sync;
+    ~dirt.start(57120, [0, 2, 4, 6]);
+    3.wait;
+    ~dirt.loadSoundFiles;
+    1.wait;
+    "-> SuperDirt Loaded".postln;
+  };
+)
