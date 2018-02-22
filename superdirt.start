@@ -11,5 +11,7 @@
     ~dirt.loadSoundFiles;
     1.wait;
     "-> SuperDirt Loaded".postln;
+		3.wait;
+		ServerMeter.new(s, 2, 8);
   };
 )

@@ -1,0 +1,186 @@
+cps (120/120)
+
+d1 $ degradeBy 0.9 $ whenmod 8 6 (jux (rev)) $ sound (samples "juno*8" (run "<12 13 8 6>"))
+  # orbit 0
+  # room 0.2
+  # size 0.2
+  # cut 1
+  # gain 0.8
+  # hpf 500
+
+d1 silence
+
+d1 $ slow 24 $ striate 128 $ s "mckenna"
+  # speed "<1 0.9>"
+  # gain 1
+  # orbit 0
+
+d5 silence
+
+d5 $ s "bass" # speed "<0.65 1>"
+  # gain 1
+  # lpf 100
+  # orbit 2
+
+d6 $ stack [
+  s "bd(3,8)",
+  s "~ cp"
+] # orbit 3
+  # gain 1
+
+d6 silence
+
+hush
+
+cps (130/120)
+
+d1 $ juxBy 0.6 (|*| speed 2) $ loopAt "<4 6 2 3>" $ chop 12 $ sound "fm:14" # gain 0.75 # delay 0.25 # delayfeedback 0.15 # delaytime 0.2 # room 0.15 # size 0.1 # orbit 0
+
+d1 $ juxBy 0.6 (|*| speed 2) $ loopAt "<3 6 4 4>" $ chop 12 $ sound "fm:14" # gain 0.75 # delay 0.25 # delayfeedback 0.15 # delaytime 0.2 # room 0.15 # size 0.1 # orbit 0
+
+d2 silence
+
+d2 $ someCycles (# crush 3) $ n "0 .. 7" # sound "feel" # speed "1.5 2" # gain 1 # hcutoff 300 # orbit 1
+
+d2 $ someCycles (# crush 3) $ n "0 .. 7" # sound "feel" # speed "1.5 2 1.2" # gain 1 # hcutoff 300 # orbit 1
+
+d2 $ degradeBy 0.4 $ someCycles (# crush 3) $ n "0 .. 7" # sound "feel" # speed 2 # gain 1 # hcutoff 300 # orbit 1
+
+d3 $ loopAt 2 $ sound "breaks125" # gain 1.1 # orbit 2
+
+d4 $ s "bd:2*2" # gain 1 # orbit 3
+
+d7 $ degradeBy 0.95 $ every 3 (slow 4) $ whenmod 8 6 (rev) $ striate 128 $ s "breaks125"
+  # gain 0.9
+  # hpf 500
+  # orbit 2
+
+d8 $ degradeBy 0.8 $ s "feel"
+
+d7 silence
+
+  d6 $ off (0.25) (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) $ "c7 af7")
+
+
+d2 $ every 4 (# speed 2) $ slow 2 $ off (0.25) (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) "c7 af7")
+  # s "rash"
+  # gain 0.8
+  # room 0.2
+  # size 0.2
+  # delay 0.3
+  # delaytime 0.2
+  # delayfeedback 0.2
+  # orbit 1
+
+
+--  striate 256
+d2 $ loopAt "<24 32>" $ striate 256 $ sound "ambient"
+  # room 0.2
+  # size 0.2
+  # gain 0.5
+  # hpf 400
+  # orbit 0
+
+
+d2 silence
+
+d5 $ loopAt "<2 1>" $ sound "procshort"
+  # hcutoff (scale 1000 700 sine)
+  # gain4 0.6
+  # orbit 1
+
+d2 silence
+
+d4 $ degradeBy 0.85 $ whenmod 8 6 (rev) $ slow 4 $ jux (rev) $ sound "numbers numbers:1 numbers:3 numbers:2"
+# speed "<0.85 1 0.75>"
+  # gain 0.9
+  # orbit 1
+  # hcutoff 700
+
+d5 $ degradeBy 0.2 $ slow 2 $ s "amencutup*8" # n (irand 8)
+  # gain 0.85
+  # speed "<1 0.95 1.05>"
+  # orbit 2
+
+d7 $ density 2 $ s "bd"
+  # lpf 150
+  # gain 0.8
+
+d7 $ stack [
+  s "bd(3,8)",
+  (0.5 <~) $ s "[sn:2 cp]",
+  s "hh:4 hh:2 hh:3*3"
+] # orbit 2
+  # gain 0.7
+
+d7 silence
+
+-- batas
+-- sin loopAt 2
+d5 $ loopAt 2 $ s "alva"
+  # gain 0.8
+  # orbit 1
+
+d6 silence
+
+d6 $ slow 4 $ s "[casio casio?] [casio:2 casio:1?]"
+  # gain 0.6
+  # delay 0.2
+  # delaytime 0.2
+  # delayfeedback 0.2
+  # orbit 0
+
+
+d3 silence
+
+hush
+
+d3 $ s "[bd hh*2] [bd cp]" # orbit 0 # gain 1
+
+d6 silence
+
+d5 $ slow 2 $ jux (rev) $ sound "[[bd casio?] [casio:4 hh:2]] [casio:2]"
+  # gain 0.7
+  # hcutoff (slow 4 $ scale 1000 700 sine)
+  # orbit 2
+
+d5 silence
+
+d5 $ s "bass" # speed "<0.65 1>"
+  # gain 1
+  # lpf 100
+  # orbit 2
+
+d6 $ degradeBy 0.5 $ whenmod 8 6 (jux (rev)) $ sound (samples "juno*8" (run "<12 13 8 6>")) -- run "12" "<8 2 4 6 12>" 12 12 12 13 13 13
+  # speed "0.25 1 2"
+  # cut 1
+  # room 0.2
+  # size 0.2
+  # delay 0.2
+  # delaytime 0.125
+  # delayfeedback 0.3
+  # gain 0.7
+  # orbit 2
+
+d6 $ off (0.25) (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) $ "c7 af7")
+  # sound "rash"
+  # gain 0.6
+  # room 0.3
+  # size 0.3
+  # delay 0.4
+  # delaytime 0.7
+  # delayfeedback 0.8
+  # orbit 3
+
+d5 $ slow 11 $ jux (rev) $ every 4 (|+| speed 2) $ off (0.25) (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) $ "c7 af7")
+  # sound "rash"
+  # gain 0.8
+  # room 0.3
+  # size 0.3
+  # delay 0.4
+  # delaytime 0.7
+  # delayfeedback 0.8
+  # orbit 3
+
+d6 silence
+  hush

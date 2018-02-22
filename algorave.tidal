@@ -1,0 +1,60 @@
+cps (123/120)
+
+d1 $ degradeBy 0.95 $ stack [
+  slow 2 $ s "glitch*8" # n (irand 70),
+  s "sn" # speed "<2 1 0.5>",
+  degradeBy 0.25 $ slow 4 $ s " gcombi*8" # n (run 8)
+] # orbit 0
+  # room 0.1
+  # size 0.1
+  # gain 0.85
+
+d2 $ stack [
+ --s "bd(3,8)",
+ s "bd:2 bd:2" # lpf 200,
+ (0.5 ~>) $ s "~ cp"
+ --s "hh hh hh hh" # gain 1.2
+] # orbit 2
+  # gain 0.9
+  # lpf 500
+
+d3 silence
+
+d3 $ degradeBy 0.45 $ every 4 (# speed 2) $ slow 2 $ off (0.25) (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) "<c7 af7 f7 ef7>")
+  # s "rash"
+  # orbit 3
+  # room 0.25
+  # size 0.25
+  # delay 0.5
+  # delaytime 0.5
+  # delayfeedback 0.5
+  # gain 0.9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- s "glitch*8" # n (irand 70),
+-- s "gcombi*8" # n (run 8)
+-- "c7 af7"
+-- $ off 0.25 (# s "pulse") $ n (off 0.125 (+12) $ off 0.25 (+7) "<c7 af7 f7 ef7>")

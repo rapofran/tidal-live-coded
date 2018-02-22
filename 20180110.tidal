@@ -1,0 +1,65 @@
+cps (123/120)
+
+d4 $ s "[casio casio?] casio:2"
+  # gain 0.9
+  # room 0.2
+  # size 0.2
+  # orbit 3
+
+d2 $ whenmod 8 6 (rev) $ degradeBy 0.8 $ slow 4 $ jux (rev) $ sound "numbers numbers:1 numbers:3 numbers:2"
+  # speed "0.75 1 1.125"
+  # gain 1
+  # orbit 2
+  # hcutoff 800
+
+d3 $ degradeBy 0.5 $ s "bd [bd [hh*3? cp*2?]]"
+  # orbit 2
+
+
+d3 silence
+
+d6 $ every 4 (slow 2) $ every 6 (0.25 <~) $ whenmod 8 6 (jux (rev)) $ sound (samples "juno*8" (run "<12 13 8 6>")) -- run "12" "<8 2 4 6 12>" 12 12 12 13 13 13
+  # speed "0.25 1 2"
+  # cut 1
+  # room 0.2
+  # size 0.2
+  # delay 0.2
+  # delaytime 0.125
+  # delayfeedback 0.3
+  # gain 0.6
+  # orbit 0
+
+hush
+
+--every 6 (slow 2) $ every 4 (0.5 <~) $ whenmod 4 2 (jux (rev))
+d7 $ sound (samples "arpy*8" (run "<24>")) -- run "12" "<8 2 4 6 12>" 12 12 12 13 13 13
+    # speed "<0.5 0.25 0.125>"
+    # cut 1
+    # room 0.2
+    # size 0.2
+    # gain 0.9
+    # orbit 4
+
+d7 silence
+
+d1 $ sound "amencutup amencutup:3*2 amencutup:2 amencutup:3"
+d1 $ n (run "<4 8 4 6>") # sound "amencutup"
+
+
+d1 $ loopAt "<2 3>" $ s "procshort"
+  # gain 0.6
+  # orbit 0
+
+d1 silence
+
+d6 $ jux (rev) $ s "moog"
+  # speed "<1 5 3 7 8 9>"
+  # sustain "32"
+  # gain 0.3
+  # room 0.2
+  # size 0.2
+  # pan 0.7
+  # hcutoff (slow 4 $ scale 500 200 sine)
+  # orbit 0
+
+  hush

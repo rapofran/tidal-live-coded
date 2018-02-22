@@ -1,0 +1,38 @@
+cps(110/120)
+
+--  jux rev
+d1 $ jux rev $ off (0.5) (# s "pulse") $ slow 2 $ n (off 0.25 (+7) $ off 0.25 (+10) "d7 a7 [a8 e7]") # sound "rash"
+
+d1 $ degradeBy 0.112 $ slow 2 $ jux rev $ off (0.5) (# s "pulse") $ slow 2 $ n (off 0.25 (+7) $ off 0.25 (+10) "d7 a7 [a8 e7]") # sound "rash"
+  # gain 0.6
+  # room 0.4
+  # size 0.4
+  # hcutoff 550
+  # orbit 0
+
+d2 $ sound "<hc? [casio]>"
+  # gain 0.8
+  # room 0.1
+  # size 0.1
+  # delay 0.2
+  # delaytime 0.125
+  # delayfeedback 0.3
+  # orbit 1
+
+--d3 $ every 4 (0.25 <~) $ slow 2 $ jux ((# speed "0.75") . rev) $ brak $ (sound $ samples "drum*4" "0 1 2 3")
+--  # hcutoff 200
+--  # orbit 2
+
+d4 $ sound "[casio:2 casio casio:2? casio:3]"
+  # gain 0.7
+  # orbit 2
+
+  d4 silence
+
+d6 $ s "bd/2?" # gain 0.7 # orbit 3
+
+d7 $ sound "bass" # gain 0.8 # orbit 3
+
+d6 silence
+
+hush
