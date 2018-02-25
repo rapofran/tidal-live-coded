@@ -11,7 +11,31 @@
     ~dirt.loadSoundFiles;
     1.wait;
     "-> SuperDirt Loaded".postln;
-		3.wait;
-		ServerMeter.new(s, 2, 8);
+	3.wait;
+	ServerMeter.new(s, 2, 8);
+	
+	3.wait;
+	j = JackConnect.new;
+
+	j.connectClients("SuperCollider:out_1", "system:playback_1");
+	j.connectClients("SuperCollider:out_2", "system:playback_2");
+	j.connectClients("SuperCollider:out_3", "system:playback_1");
+	j.connectClients("SuperCollider:out_4", "system:playback_2");
+	j.connectClients("SuperCollider:out_5", "system:playback_1");
+	j.connectClients("SuperCollider:out_6", "system:playback_2");
+	j.connectClients("SuperCollider:out_7", "system:playback_1");
+	j.connectClients("SuperCollider:out_8", "system:playback_2");
+	"-> Jack connected done".postln;
   };
+
+(SynthDef(\fms, {
+  |out, amp=1, attack=0.001, sustain=1, accel, carPartial=1, modPartial=1, index=3, mul=0.25, detune=0.1, pan=0, freq|
+  var env, mod, car, sig;
+  //amp = amp * 0.9;
+  env = EnvGen.ar(Env.perc(attack, 0.999, 1, -3), timeScale: sustain / 2, doneAction:2);
+  mod = FSinOsc.ar(freq * modPartial * Line.kr(1,1+accel, sustain), 0, freq * index * LFNoise1.kr(5.reciprocal).abs);
+  car = SinOsc.ar(([freq, freq+detune] * carPartial) + mod,    0, mul);
+  sig = car * env;
+  OffsetOut.ar(out, DirtPan.ar(sig * amp, ~dirt.numChannels, pan, env));
+}).add;)
 )

@@ -1,4 +1,8 @@
-cps (125/120)
+cps (120/120)
+
+cps 0.5
+
+d1 $ s "casio" # nudge 0.141
 
 d1 $ degradeBy 0.6 $ superimpose (fast 2) $ stack [
   --degradeBy 0.2 $ slow 2 $ s "glitch*8 glitch? glitch?" # n (irand 30) # coarse "<1 1.5 2 0.9>",
@@ -12,7 +16,7 @@ d1 $ degradeBy 0.6 $ superimpose (fast 2) $ stack [
 
 d1 silence
 
-
+hush
 d2 $ degradeBy 0.6 $ stack [
   --s "bd(3,8)",
   s "bd:3 bd:3" # gain 1.2,
